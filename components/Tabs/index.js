@@ -10,7 +10,7 @@
 
 
 
-function CreateTab(data) {
+function CreateTab(top) {
     const newTab = document.createElement('div');
     const topic = document.createElement('div');
 
@@ -18,7 +18,7 @@ function CreateTab(data) {
     topic.classList.add('topics');
 
     newTab.appendChild(topic);
-    topic.textContent = data.topics;
+    topic.textContent = top.topics;
 
 return newTab;
 
@@ -28,21 +28,17 @@ return newTab;
 const tabBoard = document.querySelector('.tabs');
 
 
-// let topic =
-// axios.get('https://lambda-times-backend.herokuapp.com/articles')
-// .then(response => {
-//         console.log(response.data);
-//         makeTab(response.data.articles);
-// })
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(response => {
+        //console.log(response.data.articles);
+        Object.values(response.data.articles).forEach(value => { 
+            console.log(value)
+;        })
+        response.data.articles.bootstrap.forEach(item => {
+            tabBoard.append(CreateTab(item))
+        })
+})
 
-// .catch((err) => {
-//     console.log('error', err)
-// })
-
-// function makeTab(obj) {
-//     for(let key in obj) {
-//         obj[key].forEach((topic) => {
-//             tabBoard.appendChild(CreateTab(topic))
-//         })
-//     }
-// }
+.catch((err) => {
+    console.log('error', err)
+})

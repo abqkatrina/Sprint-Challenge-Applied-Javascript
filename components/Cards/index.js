@@ -24,28 +24,28 @@
 
 
     // // make parent for cards
-const wall = document.querySelector('.cards-container');
+// const wall = document.querySelector('.cards-container');
 
 
-    let articles =
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//     let articles =
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
 
-.then(response => {
+// .then(response => {
     //does it work?
     //console.log(response);
     //returns data object
     //console.log(response.data);
     //returns article object
-    //console.log(response.data.articles)
-    let articleList = response.data.articles;
-    let entryList = Object.values(articleList).map((value, index) => {
-        return(value, articleList[value])});
-    let article = Object.values(entryList).map((value, index) => {
-        console.log(value, entryList[value])})
+    //console.log(response.data.articles)})
+    // let articleList = response.data.articles;
+    // let entryList = Object.values(articleList).map((value, index) => {
+    //     return(value, articleList[value])});
+    // let article = Object.values(entryList).map((value, index) => {
+    //     console.log(value, entryList[value])})
 
         //console.log(CreateCard(articleList[value]));
   
-    console.log(article);})
+    // console.log(article);})
         // CreateCard2(response.data.articles);
 
 // .catch((err) => {
