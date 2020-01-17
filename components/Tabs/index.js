@@ -27,16 +27,22 @@ return newTab;
 
 const tabBoard = document.querySelector('.tabs');
 
-axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
-    .then(response => {
-        console.log(response.data.topics);
-        //returns array of items
-        tabBoard.append(CreateTab(response.data.topics));
-    })
- 
+// let topic =
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//         console.log(response.data);
+//         makeTab(response.data.articles);
+// })
 
-    .catch(error => {
-        console.log('oh shit', error);
-    })
-// );
+// .catch((err) => {
+//     console.log('error', err)
+// })
+
+// function makeTab(obj) {
+//     for(let key in obj) {
+//         obj[key].forEach((topic) => {
+//             tabBoard.appendChild(CreateTab(topic))
+//         })
+//     }
+// }
