@@ -24,66 +24,49 @@
 
 
     // // make parent for cards
-// const wall = document.querySelector('.cards-container');
+const wall = document.querySelector('.cards-container');
 
 
-//     let articles =
-// axios.get('https://lambda-times-backend.herokuapp.com/articles')
 
-// .then(response => {
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+
+.then(response => {
     //does it work?
-    //console.log(response);
+    //console.log(response)
     //returns data object
-    //console.log(response.data);
+    //console.log(response.data)
     //returns article object
-    //console.log(response.data.articles)})
-    // let articleList = response.data.articles;
-    // let entryList = Object.values(articleList).map((value, index) => {
-    //     return(value, articleList[value])});
-    // let article = Object.values(entryList).map((value, index) => {
-    //     console.log(value, entryList[value])})
+    console.log(response.data.articles);
+    Object.values(response.data.articles.javascript).forEach(value => { 
+    //console.log(value),
+    wall.append(CreateCard(value))
+    })
 
-        //console.log(CreateCard(articleList[value]));
+    Object.values(response.data.articles.boostrap).forEach(value => { 
+    //console.log(value),
+    wall.append(CreateCard(value))
+    })
+
+    Object.values(response.data.articles.technology).forEach(value => { 
+    //console.log(value),
+    wall.append(CreateCard(value))
+    })
   
-    // console.log(article);})
-        // CreateCard2(response.data.articles);
-
-// .catch((err) => {
-//     console.log('error', err)
-// })
-
-// function CreateCard2(obj) {
-//     Object.keys(obj).forEach((key, index) => {
-//     //console.log(key, obj[key]);
-//     console.log(CreateCard(obj[key]));
-//     wall.append(CreateCard(obj[key]));
-//     })
-// }
-    
+    Object.values(response.data.articles.jQuery).forEach(value => { 
+    //console.log(value),
+    wall.append(CreateCard(value))
+    })
+ 
+    // Object.values(response.data.articles.node\.js).forEach(value => { 
+    // //console.log(value),
+    // wall.append(CreateCard(value))
+    // })
+})
 
 
-
-// axios.get('https://lambda-times-backend.herokuapp.com/articles')
-
-//     .then(response => {
-//          //does it work?
-//         //console.log(response.data.articles);
-//         //returns array of objects. need to separate objects
-//         wall.append(CreateCard1(response.data.articles));
-        
-   
-
-//     function CreateCard1(obj){
-//     Object.keys(obj).forEach((key, index) => {
-//         //console.log(key, obj[key]);
-//         console.log(CreateCard(obj[key]));
-//         wall.append(CreateCard(obj[key]));
-//         })
-//     }
-//     })
-//     .catch(error => {
-//        console.log("dangnabbit", error);
-//     })
+.catch((error) => {
+    console.log('dangnabbit', error);
+})
 
 
 function CreateCard(article){
@@ -105,8 +88,10 @@ function CreateCard(article){
     img.src = (article.authorPhoto);
 
     //oranizing elements
-    card.appendChild(headline, author);
-    author.appendChild(photoBox, byAuthor);
+    card.appendChild(headline);
+    card.appendChild(author);
+    author.appendChild(photoBox);
+    author.appendChild(byAuthor);
     photoBox.appendChild(img);
 
     //adding content

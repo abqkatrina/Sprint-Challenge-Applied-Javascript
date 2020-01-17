@@ -11,14 +11,20 @@
 
 
 function CreateTab(top) {
+
+    //constructing elements
     const newTab = document.createElement('div');
     const topic = document.createElement('div');
 
-    newTab.classList.add('tab');
-    topic.classList.add('topics');
+    //assigning classes
+    newTab.classList.add('topics');
+    topic.classList.add('tab');
 
+    //organizing elements
     newTab.appendChild(topic);
-    topic.textContent = top.topics;
+
+    //adding content
+    topic.textContent = top;
 
 return newTab;
 
@@ -28,17 +34,14 @@ return newTab;
 const tabBoard = document.querySelector('.tabs');
 
 
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(response => {
-        //console.log(response.data.articles);
-        Object.values(response.data.articles).forEach(value => { 
-            console.log(value)
-;        })
-        response.data.articles.bootstrap.forEach(item => {
-            tabBoard.append(CreateTab(item))
+        //console.log(response.data.topics)
+        response.data.topics.forEach( value => {
+            tabBoard.append(CreateTab(value))
         })
-})
+    })
 
-.catch((err) => {
-    console.log('error', err)
+.catch((error) => {
+    console.log('oh, snap!', error)
 })
